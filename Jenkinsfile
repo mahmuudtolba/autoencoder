@@ -13,5 +13,17 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        sh 'docker build -f .'
+      }
+    }
+
+    stage('Log into Dockerhub') {
+      steps {
+        sh 'docker login -u $DOCKER'
+      }
+    }
+
   }
 }
